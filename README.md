@@ -42,7 +42,13 @@ hp = clf.search_optimal_parameters()
 clf.fit(hp, epochs = 50, batch_size=32)
 ```
 
+## TODO
+[TODO]
 
-## Community
+## Note to community
+1. A lot of effort needs to be put in, as a community, to develop a systematic approach for hyperparameter tuning, hence suggestions/ ideas welcome.
+2. Pull requests are welcome for the above TODO or any other improvement.
+3. In case of any issue, open a new issue or contact me over email.
 
 ## References
+[TO ADD]
