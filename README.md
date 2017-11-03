@@ -1,5 +1,6 @@
 # smart_image_classifier 
 ## [Work in Progress][Expected Release: 07/11/2017]
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/anuragmishracse/smart_image_classifier/blob/master/LICENSE)
 
 **SM**art **I**mage **C**lassifier (**SMIC** hereafter) is a _deep learning_ library built on top of keras using the TensorFlow backend for building models for _image classification_. 
 Specialities of this library:
@@ -9,7 +10,7 @@ Specialities of this library:
 
 _It is advised that you use a GPU for training your models, it would take days using a CPU._
 
-==================================================================================================
+---------------------
 
 ## Installation
 [TODO]
