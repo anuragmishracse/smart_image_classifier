@@ -1,4 +1,4 @@
-# smart_image_classifier
-Library built on top of Keras for Image Classification. 
+# smart_image_classifier 
+## [Work in Progress][Expected Release: 07/11/2017]
 
-[Work in progress. Please don't use.]
+**SM**art **I**mage **C**lassifier(SMIC) is a modular library built on top of keras using the TensorFlow backend for building models for image classification.
