@@ -16,7 +16,7 @@ from keras.models import load_model
 
 import pandas as pd
 import numpy as np
-import cv2, os, sys
+import cv2, os, sys, ast
 from tqdm import tqdm
 from collections import defaultdict
 
@@ -104,29 +104,30 @@ class SMIC():
 					hyperparameters={'transfer_model' : transfer_model, 'optimizer' : optimizer, 'top_layers' : layers}
 					model = self.create_model(hyperparameters)
 					history = model.fit(np.asarray(sample_train_images), np.asarray(sample_labels_catgorical), batch_size=32, epochs = check_epochs, validation_split = 0.1)
-					search_result[str(hyperparameters)]=[history['acc'][-1], history['val_acc'][-1]]
+					print history.history['acc']
+					search_result[str(hyperparameters)]=[history.history['acc'][-1], history.history['val_acc'][-1]]
 
 		print search_result
 
-		for hyperparameters, results in search_result:
+		for hyperparameters, results in search_result.items():
 			if results[1] > results[0]*1.05:
 				del search_result[hyperparameters]
 
 		search_result = sorted(search_result.items(), key = lambda x: x[1], reverse=True)
-
-		return dict(search_result[0][0])
+		print search_result
+		return ast.literal_eval(search_result[0][0])
 
 
 	def fit(self, hyperparameters, epochs, batch_size, fine_tune = False):
 		labels_categorical = to_categorical(self.train_labels)
-		self.model = create_model(hyperparameters)
-		history = self.model.fit(np.asarray(self.train_images), np.asarray(labels_catgorical), batch_size=batch_size, epochs = epochs, validation_split = 0.1)
+		self.model = self.create_model(hyperparameters)
+		history = self.model.fit(np.asarray(self.train_images), np.asarray(labels_categorical), batch_size=batch_size, epochs = epochs, validation_split = 0.1)
 
 		if fine_tune:
 			for layer in self.model.layers:
 				layer.trainable = False
 			self.model.compile(loss='categorical_crossentropy', optimizer= SGD(lr=1e-4, momentum=0.9), metrics=['accuracy'])
-			history_fine = self.model.fit(np.asarray(self.train_images), np.asarray(labels_catgorical), batch_size=batch_size, epochs = epochs, validation_split = 0.1)			
+			history_fine = self.model.fit(np.asarray(self.train_images), np.asarray(labels_categorical), batch_size=batch_size, epochs = epochs, validation_split = 0.1)			
 			history.extend(history_fine)
 		return history
 
