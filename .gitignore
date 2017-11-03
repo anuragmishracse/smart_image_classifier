@@ -1,2 +1,7 @@
 *.ipynb
 *.pyc
+*.png
+*.jpg
+*.csv
+*.h5
+*.hdf5
