@@ -55,9 +55,28 @@ Building an image classification model is made really easy.
 ```python
 from smic import SMIC
 clf = SMIC()
-clf.prepare_train_data('/path/to/image/data')
-hp = clf.search_optimal_parameters()
-clf.fit(hp, epochs = 50, batch_size=32)
+clf.prepare_train_data('/path/to/data/folder')
+hyperparameters = clf.search_optimal_parameters()
+clf.fit(hyperparameters, epochs = 50, batch_size=32)
+```
+
+`hyperparameters` is a dict returned by `search_optimal_parameters()` and contains the hyperparameters that seem to work best for the current task at hand. 
+
+If you want you can use your own hyperparameters; skip line [4] and create your own hyperparameters dict like
+```python
+hyperparameters = {'transfer_model' : 'vgg16', 'optimizer' : 'sgd', 
+					'top_layers' : [['dense', 512, 'relu'],['dense', 512, 'relu']]}
+```
+Pass this dict as an argument to `.fit()`. 
+
+### Supported hyperparameters and values:
+```
+'transfer_model' : ['vgg16', 'vgg19', 'resnet50', 'inception_v3']
+'optimizer': ['sgd', 'rmsprop', 'adam']
+'top_layers': A list of all the layers that you want to add on top of the pre-trained CNN.
+				Eg: [['dense', 512, 'relu'],['dense', 512, 'relu'],...]
+				Here 'dense' is the type of layer, 512 is the output dimension and 'relu' is the activation function.
+
 ```
 
 ## TODO
@@ -83,5 +102,5 @@ Train
 ## Note to community
 1. A lot of effort needs to be put in, as a community, to develop a systematic approach for hyperparameter tuning, hence suggestions/ ideas welcome.
 2. Pull requests are welcome for the above TODO or any other improvement.
-3. In case of any issue, open a new issue or contact me over email.
+3. In case of any issues/ queries, open a new issue or contact me over email.
 
