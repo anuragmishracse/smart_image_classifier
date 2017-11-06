@@ -29,7 +29,25 @@ Current implementation of the library depends on the following:
 Requirements can be installed by `pip install -r requirements.py`
 
 ## Train / Test data organization
-The train and test images should be put in seperate directories and a csv file needs to be created that contains <"Name of image", "Label"> for all the images in the 
+The train and test images should be put in seperate directories. The required data format is,
+```
+/path/to/data/folder/
+|---->train
+|----|----->trainImage1 #Image names can be anything
+|----|----->trainImage2
+|----|----->trainImage3
+|----|----->___so on___
+
+|---->test
+|----|----->testImage1 #Image names can be anything
+|----|----->testImage2
+|----|----->testImage3
+|----|----->___so on___
+
+|---->trainLabels.csv #Contains records in `"trainImage1","cat"` format
+
+|---->testLabels.csv  #Contains records in `"testImage1","dog"` formmat
+```
 
 ## Usage
 Building an image classification model is made really easy. 
@@ -47,16 +65,18 @@ clf.fit(hp, epochs = 50, batch_size=32)
 2. The hyperparameter tuning currently searches for an optimizer, tranfer learning CNN and number of top layers; Add support for more hyperparameters like momentum value, Dropouts, Regularization etc.
 3. Add image data augmentation, that can potentially help learn from fewer datasets.
 4. The dataset needs to be organized in the above mentioned format; add support for other formats like:
-	Train
-	|--->Cat
-	|--->|----catImage1
-	|--->|----catImage2
-	|--->|----......
-	|--->Dog
-	|--->|----dogImage1
-	|--->|----dogImage2
-	|--->|----......
-	.............
+```
+Train
+|--->Cat
+|--->|----catImage1
+|--->|----catImage2
+|--->|----......
+|--->Dog
+|--->|----dogImage1
+|--->|----dogImage2
+|--->|----......
+.............
+```
 5. Add tests; figure out a way to test changes so that it doesn't corrupt the repo; use CI.
 
 
