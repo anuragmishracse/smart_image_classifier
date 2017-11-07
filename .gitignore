@@ -5,3 +5,7 @@
 *.csv
 *.h5
 *.hdf5
+
+build/*
+dist/*
+smic.egg-info/*
