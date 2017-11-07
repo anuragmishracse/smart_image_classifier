@@ -74,9 +74,9 @@ Pass this dict as an argument to `.fit()`.
 'transfer_model' : ['vgg16', 'vgg19', 'resnet50', 'inception_v3']
 'optimizer': ['sgd', 'rmsprop', 'adam']
 'top_layers': A list of all the layers that you want to add on top of the pre-trained CNN.
-				Eg: [['dense', 512, 'relu'],['dense', 512, 'relu'],...]
-				Here 'dense' is the type of layer, 512 is the output dimension and 'relu' is the activation function.
-
+		Eg: [['dense', 512, 'relu'],['dense', 512, 'relu'],...]
+		Here 'dense' is the type of layer, 512 is the output dimension and
+		'relu' is the activation function.
 ```
 
 ## TODO
