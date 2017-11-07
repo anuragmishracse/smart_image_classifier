@@ -99,7 +99,7 @@ class SMIC():
 		for transfer_model in self.transfer_models.keys():
 			for optimizer in self.optimizers.keys():
 				layers=[]
-				for layer_count in range(1,2):
+				for layer_count in range(1,3):
 					layers.append(['dense', 512, 'relu']) 
 					hyperparameters={'transfer_model' : transfer_model, 'optimizer' : optimizer, 'top_layers' : layers}
 					model = self.create_model(hyperparameters)
@@ -131,7 +131,9 @@ class SMIC():
 			history.extend(history_fine)
 		return history
 
-	def predict(self, image):
+
+	def predict(self, image_path):
+		image = self.read_image(image_name)
 		prediction = self.model.predict(np.asarray([image]))
 		prediction = np.argmax(prediction, axis=1)
 		return self.rev_label_map[prediction]
