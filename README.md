@@ -1,7 +1,7 @@
 # smart_image_classifier 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/anuragmishracse/smart_image_classifier/blob/master/LICENSE)
 
-**SM**art **I**mage **C**lassifier (**SMIC** hereafter) is a _deep learning_ library built on top of keras using the TensorFlow backend for building models for _image classification_. 
+**SM**art **I**mage **C**lassifier (abbreviated and named as **SMIC**) is a _deep learning_ library built on top of keras using the TensorFlow backend for building models for _image classification_. 
 Specialities of this library:
 1. It searches for the optimum set of hyperparameters for the classification model
 2. Works for any training set, given it's organized in a format that the library understands
@@ -10,9 +10,6 @@ Specialities of this library:
 _It is advised that you use a GPU for training your models, as it might take days using a CPU._
 
 ---------------------
-
-## Installation
-[WIP]
 
 ## Requirements
 Current implementation of the library depends on the following:
@@ -25,7 +22,15 @@ Current implementation of the library depends on the following:
 6. h5py
 7. keras==2.0.9
 ```
+Please make sure that the requirements are satisifies.
 Requirements can be installed by `pip install -r requirements.py`
+
+## Installation
+This package can be installed by
+```
+pip install smic
+```
+and you're done.
 
 ## Train / Test data organization
 The train and test images should be put in seperate directories. The required data format is,
